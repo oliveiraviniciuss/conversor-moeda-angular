@@ -1,0 +1,27 @@
+table {
+    border: 1px solid black;
+    border-spacing:0;
+
+  }
+th{
+    border-bottom: 1px solid black;
+    
+}
+
+  td {
+     text-align: center;
+}
+table td {
+    border-right: 1px solid #000;
+}
+
+table td:first-child {
+    border-left: none;
+}
+
+table td:last-child {
+    border-right: none;
+}
+thead{
+    text-align: center
+}

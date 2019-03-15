@@ -1,0 +1,47 @@
+<h2>Minhas moedas</h2>
+
+<ul>
+  <li *ngFor= "let m of moedas"> {{m.symbol}} - {{m.price}}</li>
+
+</ul>
+
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Cotação Dólar</th>
+        </tr>
+        <tr>
+          <th>Moeda</th>
+          <th>Cotação</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of moedas">
+        <td>{{m.symbol.substring(3,7)}}</td>
+        <td>{{m.price}}</td>   
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div>
+      <label>Summary: </label>
+      <select >
+         
+          <option *ngFor="let m of moedas" value={{m.price}}>
+              {{m.symbol.substring(3,7)}}
+          </option>
+      </select>
+  </div>
+
+  <input
+			type="text"
+			name="valor"
+			class="form-control text-right"
+			placeholder="0"
+			[(ngModel)]="conversao.valor"
+			numero
+			required>
+<input type="text">
