@@ -1,47 +1,73 @@
-<h2>Minhas moedas</h2>
-
-<ul>
-  <li *ngFor= "let m of moedas"> {{m.symbol}} - {{m.price}}</li>
-
-</ul>
 
 
-<table>
+<div>
+	Insira o valor em Dólar a ser convertido:
+</div>
+
+<br>
+<form class="form-horizontal">
+        <div class="form-group">    
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input type="text"
+                type="number"
+                name="value"
+                class="form-control text-left"
+                placeholder="0"
+                [(ngModel)]="conversao.valor"
+                numero
+                required
+                autocomplete="off"
+                >
+            </div>
+        </div>   
+    <div class="form-group">
+        <label>Selecione a moeda desejada:</label>
+        <select class="form-control"
+            name="moedaPara"
+            [(ngModel)]="conversao.moedaPara"
+            required="true"
+            >
+                
+            <option *ngFor="let m of moedas" value={{m.price}}>
+                    {{m.symbol.substring(3,7)}}
+            </option>
+        </select>
+    </div>
+    
+    <input
+        type="submit"
+        value="Converter"
+        class="btn btn-success"
+        data-toggle="modal"
+        (click)="converter()"
+        >
+</form>    
+
+<br> 
+<textarea>O valor da conversão é: {{conversao.valorFinal}}</textarea>
+    
+
+<table class="table table-sm table-dark">
     <thead>
         <tr>
-            <th colspan="2">Cotação Dólar</th>
+            <th>Cotação Dólar</th>
         </tr>
-        <tr>
-          <th>Moeda</th>
-          <th>Cotação</th>
-           
-        </tr>
+            <tr>
+                <th >Moeda</th>
+                <th>Cotação</th>
+            </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let m of moedas">
-        <td>{{m.symbol.substring(3,7)}}</td>
-        <td>{{m.price}}</td>   
-      </tr>
-    </tbody>
-  </table>
+            <tbody>
+                <tr *ngFor="let m of moedas">
+                    <td>{{m.symbol.substring(3,7)}}</td>
+                    <td>{{m.price}}</td>   
+                </tr>
+            </tbody>
+    </table>
+
+<br>
 
 
-  <div>
-      <label>Summary: </label>
-      <select >
-         
-          <option *ngFor="let m of moedas" value={{m.price}}>
-              {{m.symbol.substring(3,7)}}
-          </option>
-      </select>
-  </div>
-
-  <input
-			type="text"
-			name="valor"
-			class="form-control text-right"
-			placeholder="0"
-			[(ngModel)]="conversao.valor"
-			numero
-			required>
-<input type="text">

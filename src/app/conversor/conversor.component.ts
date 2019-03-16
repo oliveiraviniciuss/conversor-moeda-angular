@@ -3,6 +3,7 @@ import { MoedaService } from '../moeda.service';
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 import { NgForm } from '@angular/forms';
 import {Conversao} from 'src/app/conversor/models/conversao.model';
+import { NgLocaleLocalization } from '@angular/common';
 
 @Component({
   selector: 'app-conversor',
@@ -13,11 +14,13 @@ export class ConversorComponent implements OnInit {
   moedas: Array<any[]>;
   private conversao: Conversao;
 
+
   constructor(private moedaService: MoedaService) { }
 
   ngOnInit() {
-    this.listar();
     this.init();
+    this.listar();
+   
   }
 
   listar(){
@@ -25,6 +28,11 @@ export class ConversorComponent implements OnInit {
   }
 
   init(){
-    this.conversao = new Conversao(null);
+    this.conversao = new Conversao(null,null,null);
+  }
+  converter(){    
+    this.conversao.valorFinal = (Number(this.conversao.moedaPara) * this.conversao.valor);
+    
+
   }
 }
